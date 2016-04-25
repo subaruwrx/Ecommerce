@@ -25,8 +25,8 @@ public class Brand_Factory {
 
         Brand brand = new Brand
                 .Builder()
-                .brandCode(values.get("Brandcode"))
-                .brandName(values.get("BrandName"))
+                .brandCode(values.get("brandCode"))
+                .brandName(values.get("brandName"))
                 .build();
         return brand;
 

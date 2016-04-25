@@ -21,9 +21,10 @@ public class Division_Factory {
         return instance;
     }
 
-    public Division createDivision(Address address, Map<String,String> values) {
+    public static Division createDivision(Address address, Map<String,String> values) {
         Division div= new Division
-                .Builder(values.get("warehouse"))
+                .Builder()
+                .wareHouse(values.get("wareHouse"))
                 .Street(address)
                 .producttypewhareH(values.get("productType"))
                 .build();

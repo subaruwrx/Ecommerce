@@ -31,9 +31,14 @@ public class Division implements Serializable {
         private String warehouse;
         private String productType;
 
-        public Builder(String warehouse)
+        public Builder()
+        {
+
+        }
+        public Builder wareHouse(String warehouse)
         {
             this.warehouse=warehouse;
+            return this;
         }
 
         public Builder Street(Address address) {

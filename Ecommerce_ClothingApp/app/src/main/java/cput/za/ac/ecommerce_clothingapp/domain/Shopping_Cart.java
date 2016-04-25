@@ -24,8 +24,8 @@ public class Shopping_Cart implements Serializable {
         private Long id;
         private Date created;
 
-        public Builder(Long id){
-            this.id=id;
+        public Builder(){
+
         }
 
         public Builder dateCreated(Date created)

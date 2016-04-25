@@ -23,7 +23,7 @@ public class Account_Factory {
         }
         return instance;
     }
-    public static Account createAccount( Address address, Map<String, String> values, Date date, boolean is_closed)
+    public static Account createAccount(Address address, Map<String, String> values, Date date, String is_closed)
     {
 
 

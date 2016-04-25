@@ -20,10 +20,10 @@ public class Shopping_Cart_Factory {
         return instance;
     }
 
-    public Shopping_Cart createShopping_Cart(Long id, Date created) {
+    public static Shopping_Cart createShopping_Cart( Date created) {
 
         Shopping_Cart cart= new Shopping_Cart
-                .Builder(id)
+                .Builder()
                 .dateCreated(created)
                 .build();
         return cart;

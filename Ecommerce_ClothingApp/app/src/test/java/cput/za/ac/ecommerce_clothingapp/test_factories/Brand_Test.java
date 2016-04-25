@@ -21,7 +21,7 @@ public class Brand_Test {
         final String code="Nikw101";
         Map<String,String> values = new HashMap<String,String>();
 
-        values.put("Brandname",name);
+        values.put("brandName",name);
         values.put("brandCode", code);
 
 
@@ -39,7 +39,7 @@ public class Brand_Test {
         final String code="Nikw101";
         Map<String,String> values = new HashMap<String,String>();
 
-        values.put("Brandname","Addidas");
+        values.put("brandName","Addidas");
         values.put("brandCode", "Adc101");
 
 

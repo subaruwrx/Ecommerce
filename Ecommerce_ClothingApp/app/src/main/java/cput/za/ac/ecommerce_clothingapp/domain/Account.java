@@ -12,7 +12,7 @@ public class Account implements Serializable {
     private Long id;
     private String accountNumber;
     private Address address;
-    private boolean is_closed;
+    private String is_closed;
     private Date open;
     private Date closed;
 
@@ -21,6 +21,12 @@ public class Account implements Serializable {
     }
 
     private Account(Builder build){
+        id=build.id;
+        accountNumber=build.accountNumber;
+        address=build.address;
+        is_closed=build.is_closed;
+        open=build.open;
+        closed=build.closed;
 
 
     }
@@ -30,7 +36,7 @@ public class Account implements Serializable {
         private Long id;
         private String accountNumber;
         private Address address;
-        private boolean is_closed;
+        private String is_closed;
         private Date open;
         private Date closed;
 
@@ -54,7 +60,7 @@ public class Account implements Serializable {
         }
 
 
-        public Builder is_Closed(boolean is_closed){
+        public Builder is_Closed(String is_closed){
             this.is_closed=is_closed;
             return this;
         }
@@ -106,13 +112,14 @@ public class Account implements Serializable {
         return open;
     }
 
-    public boolean is_closed() {
+    public String is_closed() {
         return is_closed;
     }
 
     public Date getClosed() {
         return closed;
     }
+
     @Override
     public boolean equals(Object obj) {
         if (obj == null) {

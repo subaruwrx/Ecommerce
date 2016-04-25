@@ -1,7 +1,6 @@
 package cput.za.ac.ecommerce_clothingapp.test_factories;
 
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Date;
@@ -16,15 +15,16 @@ import cput.za.ac.ecommerce_clothingapp.factories.Address_Factory;
 /**
  * Created by Admin on 2016-04-19.
  */
+
+
 public class Account_Test {
 
-
-    Date dateOpen=new Date(2016,11,25);
+    Date mydate= new Date();
 
     @Test
     public void testCreateAccount() throws Exception {
 
-        boolean closed=true;
+        String closed=true;
 
         Map<String, String> values = new HashMap<>();
 
@@ -46,11 +46,11 @@ public class Account_Test {
 
 
         Account account = Account_Factory
-                .createAccount(address,values,dateOpen,closed);
+                .createAccount(address,values,mydate,closed);
 
-        ;
-        //Assert.assertEquals(dateOpen,account.getClosed());
-       // Assert.assertFalse(closed,account.is_closed());
+
+        Assert.assertEquals(mydate,account.getClosed());
+        //Assert.assertFalse(closed,account.is_closed());
 
 
         Assert.assertEquals("cape town",address.getCity());

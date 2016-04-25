@@ -20,14 +20,12 @@ public class Supplier_Factory {
         }
         return instance;
     }
-
-    public Supplier createSupplier(Long id, Map<String,String> values) {
+  ///include number of days
+    public static Supplier createSupplier(Map<String,String> values) {
         Supplier sup= new Supplier
                 .Builder()
-                //.name("")
                 .companyName(values.get("companyName"))
                 .supplyingType(values.get("supplyingType"))
-                .Id(id)
                 .build();
         return sup;
 
