@@ -34,12 +34,12 @@ public class OffersRepositoryImpl extends SQLiteOpenHelper implements OffersRepo
     // Database creation sql statement
     private static final String DATABASE_CREATE = " CREATE TABLE "
             +TABLE_NAME +"("
-            +COLUMN_ID + "INTEGER PRIMARY KEY AUTOINCREMENT, "
-            +COLUMN_PRODUCTID + "INTEGER  NOT NULL , "
-            +COLUMN_OFFERPRICE +"INTEGER  NOT NULL ,"
-            +COLUMN_OFFERSTARTDATE +"DATE  NOT NULL ,"
-            +COLUMN_OFFERENDDATE+"DATE  NOT NULL ,"
-            +COLUMN_DESCRIPTION +"TEXT NOT NULL);";
+            +COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+            +COLUMN_PRODUCTID + " INTEGER  , "
+            +COLUMN_OFFERPRICE +" INTEGER  ,"
+            +COLUMN_OFFERSTARTDATE +" DATE  NOT NULL ,"
+            +COLUMN_OFFERENDDATE+" DATE  NOT NULL ,"
+            +COLUMN_DESCRIPTION +" TEXT NOT NULL);";
 
     public OffersRepositoryImpl(Context context) {
         super(context, DBConstants.DATABASE_NAME, null, DBConstants.DATABASE_VERSION);
@@ -114,7 +114,7 @@ public class OffersRepositoryImpl extends SQLiteOpenHelper implements OffersRepo
         open();
         ContentValues values = new ContentValues();
         values.put(COLUMN_ID, entity.getId());
-        values.put(COLUMN_PRODUCTID, entity.getProductId());
+        //values.put(COLUMN_PRODUCTID, entity.getProductId());
         values.put(COLUMN_OFFERPRICE, entity.getOfferPrice());
         values.put(COLUMN_OFFERSTARTDATE, entity.getOfferStartDate().toString());
         values.put(COLUMN_OFFERENDDATE, entity.getOfferEndDate().toString());

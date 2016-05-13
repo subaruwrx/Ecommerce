@@ -36,12 +36,12 @@ public class ShoppingCartRepositoryImpl extends SQLiteOpenHelper implements Shop
     // Database creation sql statement
     private static final String DATABASE_CREATE = " CREATE TABLE "
             +TABLE_NAME +"("
-            +COLUMN_ID + "INTEGER PRIMARY KEY AUTOINCREMENT, "
-            +COLUMN_PRODUCTID + "INTEGER  NOT NULL , "
-            +COLUMN_SESSIONID +"INTEGER  NOT NULL ,"
-            +COLUMN_QUANTITY +"INTEGER NOT NULL ,"
-            +COLUMN_PRICE +"INTEGER NOT NULL ,"
-            +COLUMN_CREATE +"DATE NOT NULL);";
+            +COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT , "
+            +COLUMN_PRODUCTID + " INTEGER  , "
+            +COLUMN_SESSIONID +" INTEGER  ,"
+            +COLUMN_QUANTITY +" INTEGER NOT NULL ,"
+            +COLUMN_PRICE +" INTEGER NOT NULL ,"
+            +COLUMN_CREATE +" DATE NOT NULL);";
 
     public ShoppingCartRepositoryImpl(Context context) {
         super(context, DBConstants.DATABASE_NAME, null, DBConstants.DATABASE_VERSION);
@@ -55,6 +55,23 @@ public class ShoppingCartRepositoryImpl extends SQLiteOpenHelper implements Shop
 
     public void close() {
         this.close();
+    }
+
+    @Override
+    public void onCreate(SQLiteDatabase db) {
+
+        db.execSQL(DATABASE_CREATE);
+    }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+
+        Log.w(this.getClass().getName(),
+                "Upgrading database from version " + oldVersion + " to "
+                        + newVersion + ", which will destroy all old data");
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+        onCreate(db);
+
     }
 
     @Override
@@ -105,9 +122,6 @@ public class ShoppingCartRepositoryImpl extends SQLiteOpenHelper implements Shop
         values.put(COLUMN_PRICE, entity.getPrice());
         values.put(COLUMN_CREATE, entity.getCreated().toString());
 
-
-
-
         long id = db.insertOrThrow(TABLE_NAME, null, values);
         ShoppingCart insertedEntity = new ShoppingCart.Builder()
                 .copy(entity)
@@ -121,11 +135,11 @@ public class ShoppingCartRepositoryImpl extends SQLiteOpenHelper implements Shop
         open();
         ContentValues values = new ContentValues();
         values.put(COLUMN_ID, entity.getId());
-        values.put(COLUMN_PRODUCTID, entity.getProductId());
-        values.put(COLUMN_SESSIONID, entity.getSessionId());
+        //values.put(COLUMN_PRODUCTID, entity.getProductId());
+       // values.put(COLUMN_SESSIONID, entity.getSessionId());
         values.put(COLUMN_QUANTITY, entity.getQauntity());
         values.put(COLUMN_PRICE, entity.getPrice());
-        values.put(COLUMN_CREATE, entity.getCreated().toString());
+//        values.put(COLUMN_CREATE, entity.getCreated().toString());
         db.update(
                 TABLE_NAME,
                 values,
@@ -177,22 +191,7 @@ public class ShoppingCartRepositoryImpl extends SQLiteOpenHelper implements Shop
         return rowsDeleted;
     }
 
-    @Override
-    public void onCreate(SQLiteDatabase db) {
 
-        db.execSQL(DATABASE_CREATE);
-    }
-
-    @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
-        Log.w(this.getClass().getName(),
-                "Upgrading database from version " + oldVersion + " to "
-                        + newVersion + ", which will destroy all old data");
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
-        onCreate(db);
-
-    }
 
 
 }

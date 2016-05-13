@@ -35,11 +35,11 @@ public class WishListRepoditoryImpl extends SQLiteOpenHelper implements WishList
     // Database creation sql statement
     private static final String DATABASE_CREATE = " CREATE TABLE "
             +TABLE_NAME +"("
-            +COLUMN_ID + "INTEGER PRIMARY KEY AUTOINCREMENT, "
-            +COLUMN_PRODUCTID + "INTEGER  NOT NULL , "
-            +COLUMN_CUSTOMERID +"INTEGER  NOT NULL ,"
-            +COLUMN_NAME +"TEXT NOT NULL ,"
-            +COLUMN_INSERTDATE +"DATE NOT NULL);";
+            +COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+            +COLUMN_PRODUCTID + " INTEGER , "
+            +COLUMN_CUSTOMERID +" INTEGER ,"
+            +COLUMN_NAME +" TEXT NOT NULL,"
+            +COLUMN_INSERTDATE +" DATE NOT NULL);";
 
     public WishListRepoditoryImpl(Context context) {
         super(context, DBConstants.DATABASE_NAME, null, DBConstants.DATABASE_VERSION);
@@ -115,9 +115,9 @@ public class WishListRepoditoryImpl extends SQLiteOpenHelper implements WishList
         open();
         ContentValues values = new ContentValues();
         values.put(COLUMN_ID, entity.getId());
-        values.put(COLUMN_PRODUCTID, entity.getProductId());
-        values.put(COLUMN_CUSTOMERID, entity.getCustomerId());
-        values.put(COLUMN_INSERTDATE, entity.getInsertDate().toString());
+        //values.put(COLUMN_PRODUCTID, entity.getProductId());
+        //values.put(COLUMN_CUSTOMERID, entity.getCustomerId());
+        //values.put(COLUMN_INSERTDATE, entity.getInsertDate().toString());
         values.put(COLUMN_NAME, entity.getName());
         db.update(
                 TABLE_NAME,

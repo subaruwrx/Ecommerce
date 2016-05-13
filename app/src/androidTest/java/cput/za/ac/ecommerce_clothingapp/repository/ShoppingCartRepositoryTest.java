@@ -24,14 +24,12 @@ public class ShoppingCartRepositoryTest  extends AndroidTestCase {
         ShoppingCartRepository repo = new ShoppingCartRepositoryImpl(this.getContext());
 
         // CREATE
+        AppUtil ap = new AppUtil();
         ShoppingCart createEntity = new  ShoppingCart.Builder()
                 .price(400.00)
                 .quantity(4)
-                .dateCreated(AppUtil.getDate("4-May-2016"))
+                .dateCreated(AppUtil.getDate("25-05-2016"))
                 .build();
-
-
-
 
         ShoppingCart  insertedEntity = repo.save(createEntity);
         id=insertedEntity.getId();
@@ -48,13 +46,12 @@ public class ShoppingCartRepositoryTest  extends AndroidTestCase {
 
         //UPDATE ENTITY
         ShoppingCart  updateEntity = new  ShoppingCart.Builder()
-                .price(400.00)
-                .quantity(4)
-                .dateCreated(AppUtil.getDate("4-May-2016"))
+                .copy(entity)
+                .quantity(5)
                 .build();
         repo.update(updateEntity);
         ShoppingCart  newEntity = repo.findById(id);
-        Assert.assertEquals(TAG+ " UPDATE ENTITY","id",newEntity.getId());
+        Assert.assertEquals(TAG+" UPDATE ENTITY",5,newEntity.getQauntity());
 
         // DELETE ENTITY
         repo.delete(updateEntity);

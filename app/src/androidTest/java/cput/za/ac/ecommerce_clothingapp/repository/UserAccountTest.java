@@ -48,15 +48,12 @@ public class UserAccountTest  extends AndroidTestCase {
 
         //UPDATE ENTITY
         UserAccount  updateEntity = new  UserAccount.Builder()
-                .userName("Ver212039212")
-                .password("*******")
-                .hintQuestion("what's your favourite car")
+                .copy(entity)
                 .answer("Bugatti")
-                .description("v12 twin turbo motor")
                 .build();
         repo.update(updateEntity);
         UserAccount  newEntity = repo.findById(id);
-        Assert.assertEquals(TAG+ " UPDATE ENTITY","id",newEntity.getId());
+        Assert.assertEquals(TAG+ " UPDATE ENTITY","Bugatti",newEntity.getAnswer());
 
         // DELETE ENTITY
         repo.delete(updateEntity);

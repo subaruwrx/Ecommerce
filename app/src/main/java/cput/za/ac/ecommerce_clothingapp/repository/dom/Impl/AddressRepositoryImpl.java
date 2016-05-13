@@ -13,13 +13,13 @@ import java.util.Set;
 
 import cput.za.ac.ecommerce_clothingapp.config.databases.DBConstants;
 import cput.za.ac.ecommerce_clothingapp.domain.Address;
-import cput.za.ac.ecommerce_clothingapp.repository.Repository;
+import cput.za.ac.ecommerce_clothingapp.repository.dom.AddressRepository;
 
 
 /**
  * Created by Admin on 2016-04-25.
  */
-public class AddressRepositoryImpl extends SQLiteOpenHelper implements Repository<Address,Long> {
+public class AddressRepositoryImpl extends SQLiteOpenHelper implements AddressRepository {
 
 
     public static final String TABLE_NAME="address";
@@ -35,11 +35,11 @@ public class AddressRepositoryImpl extends SQLiteOpenHelper implements Repositor
     // Database creation sql statement
     private static final String DATABASE_CREATE = " CREATE TABLE "
             +TABLE_NAME +"("
-            +COLUMN_ID + "INTEGER PRIMARY KEY AUTOINCREMENT, "
+            +COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
             +COLUMN_CITY + " TEXT  NOT NULL , "
-            +COLUMN_STREET +"TEXT NOT NULL ,"
-            +COLUMN_COUNTRY +"TEXT NOT NULL ,"
-            +COLUMN_ZIPCODE +"TEXT NOT NULL ,";
+            +COLUMN_STREET +" TEXT NOT NULL ,"
+            +COLUMN_COUNTRY +" TEXT NOT NULL ,"
+            +COLUMN_ZIPCODE +" TEXT NOT NULL);";
 
     public  AddressRepositoryImpl(Context context) {
         super(context, DBConstants.DATABASE_NAME, null, DBConstants.DATABASE_VERSION);

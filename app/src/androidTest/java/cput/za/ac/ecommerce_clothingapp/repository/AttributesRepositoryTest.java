@@ -47,13 +47,12 @@ public class AttributesRepositoryTest extends AndroidTestCase {
 
         //UPDATE ENTITY
         Attributes updateEntity = new Attributes.Builder()
+                .copy(entity)
                 .attributeName("color")
-                .attributeValue("red")
-                .description("Nike Sneakers")
                 .build();
         repo.update(updateEntity);
         Attributes newEntity = repo.findById(id);
-        Assert.assertEquals(TAG+ " UPDATE ENTITY","accountNumber",newEntity.getId());
+        Assert.assertEquals(TAG+ " UPDATE ENTITY","color",newEntity.getAttributeName());
 
         // DELETE ENTITY
         repo.delete(updateEntity);

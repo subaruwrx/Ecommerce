@@ -43,12 +43,12 @@ public class RoleRepositoryTest extends AndroidTestCase {
 
         //UPDATE ENTITY
         Role  updateEntity = new  Role.Builder()
-                .role("User")
-                .description("follow instructions")
+                .copy(entity)
+                .role("Admin")
                 .build();
         repo.update(updateEntity);
         Role newEntity = repo.findById(id);
-        Assert.assertEquals(TAG+ " UPDATE ENTITY","id",newEntity.getId());
+        Assert.assertEquals(TAG+ " UPDATE ENTITY","Admin",newEntity.getRole());
 
         // DELETE ENTITY
         repo.delete(updateEntity);

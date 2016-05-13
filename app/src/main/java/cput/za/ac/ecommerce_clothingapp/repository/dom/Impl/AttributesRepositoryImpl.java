@@ -33,10 +33,10 @@ public class AttributesRepositoryImpl extends SQLiteOpenHelper implements Attrib
     // Database creation sql statement
     private static final String DATABASE_CREATE = " CREATE TABLE "
             +TABLE_NAME +"("
-            +COLUMN_ID + "INTEGER PRIMARY KEY AUTOINCREMENT, "
+            +COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
             +COLUMN_ATTRIBUTENAME + " TEXT  NOT NULL , "
-            +COLUMN_ATTRIBUTEVALUE +"TEXT NOT NULL ,"
-            +COLUMN_DESCRIPTION +"TEXT NOT NULL);";
+            +COLUMN_ATTRIBUTEVALUE +" TEXT NOT NULL ,"
+            +COLUMN_DESCRIPTION +" TEXT NOT NULL);";
 
     public AttributesRepositoryImpl(Context context) {
         super(context, DBConstants.DATABASE_NAME, null, DBConstants.DATABASE_VERSION);

@@ -36,15 +36,15 @@ public class UserRepositoryImpl extends SQLiteOpenHelper implements UserReposito
     // Database creation sql statement
     private static final String DATABASE_CREATE = " CREATE TABLE "
             +TABLE_NAME +"("
-            +COLUMN_USERID + "INTEGER PRIMARY KEY AUTOINCREMENT, "
-            +COLUMN_ACCOUNTID + "INTEGER  NOT NULL , "
-            +COLUMN_ADDRESSID +"INTEGER  NOT NULL ,"
-            +COLUMN_FIRSTNAME+"TEXT NOT NULL ,"
-            +COLUMN_SURNAME +"TEXT NOT NULL ,"
-            +COLUMN_CONTACTNO + "TEXT NOT NULL,"
-            +COLUMN_GENDER +"TEXT NOT NULL ,"
-            +COLUMN_EMAIL+ "TEXT NOT NULL ,"
-            +COLUMN_DESCRIPTION +"TEXT NOT NULL);";
+            +COLUMN_USERID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+            +COLUMN_ACCOUNTID + " INTEGER   , "
+            +COLUMN_ADDRESSID +" INTEGER  ,"
+            +COLUMN_FIRSTNAME+" TEXT NOT NULL ,"
+            +COLUMN_SURNAME +" TEXT NOT NULL ,"
+            +COLUMN_CONTACTNO + " TEXT NOT NULL,"
+            +COLUMN_GENDER +" TEXT NOT NULL ,"
+            +COLUMN_EMAIL+ " TEXT NOT NULL ,"
+            +COLUMN_DESCRIPTION +" TEXT NOT NULL);";
 
 
     public UserRepositoryImpl(Context context) {
@@ -131,8 +131,8 @@ public class UserRepositoryImpl extends SQLiteOpenHelper implements UserReposito
         open();
         ContentValues values = new ContentValues();
         values.put(COLUMN_USERID, entity.getUserId());
-        values.put(COLUMN_ACCOUNTID, entity.getAccountId());
-        values.put(COLUMN_ADDRESSID, entity.getAddressId());
+        //values.put(COLUMN_ACCOUNTID, entity.getAccountId());
+        //values.put(COLUMN_ADDRESSID, entity.getAddressId());
         values.put(COLUMN_FIRSTNAME, entity.getFirstName());
         values.put(COLUMN_SURNAME, entity.getSurName());
         values.put(COLUMN_CONTACTNO, entity.getContactNo());

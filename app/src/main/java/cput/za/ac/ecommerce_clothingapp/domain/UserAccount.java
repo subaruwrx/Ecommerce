@@ -28,6 +28,7 @@ public class UserAccount implements Serializable{
         this.hintQuestion=build.hintQuestion;
         this.answer=build.answer;
         this.description=build.description;
+        this.user=build.user;
 
 
     }
@@ -40,9 +41,17 @@ public class UserAccount implements Serializable{
         private String hintQuestion;
         private String answer;
         private String description;
+        private User user;
+
+
 
         public Builder(){
 
+        }
+
+        public Builder user(User user){
+            this.user=user;
+            return this;
         }
 
         public Builder id(Long id){
@@ -82,6 +91,7 @@ public class UserAccount implements Serializable{
             this.answer=account.getAnswer();
             this.hintQuestion=account.getHintQuestion();
             this.description=account.getDescription();
+            this.user=account.getUser();
             return this;
         }
 
@@ -115,5 +125,8 @@ public class UserAccount implements Serializable{
 
     public String getDescription() {
         return description;
+    }
+    public User getUser() {
+        return user;
     }
 }

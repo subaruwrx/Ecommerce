@@ -47,17 +47,13 @@ public class UserRepositoryTest extends AndroidTestCase {
 
         //UPDATE ENTITY
         User  updateEntity = new  User.Builder()
-                .firstName("Sibabalwe")
-                .surName("Dike")
-                .gender("male")
-                .contactNo("081 894 1030")
-                .email("sibabalwedike@gmail.com")
+               .copy(entity)
                 .description("Admin")
                 .build();
 
         repo.update(updateEntity);
         User  newEntity = repo.findById(id);
-        Assert.assertEquals(TAG+ " UPDATE ENTITY","id",newEntity.getUserId());
+        Assert.assertEquals(TAG+ " UPDATE ENTITY","Admin",newEntity.getDescription());
 
         // DELETE ENTITY
         repo.delete(updateEntity);

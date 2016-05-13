@@ -15,12 +15,12 @@ import cput.za.ac.ecommerce_clothingapp.repository.dom.Impl.AddressRepositoryImp
  */
 public class AddressRepositoryTest  extends AndroidTestCase {
 
-    private static final String TAG = "ADDRESS TEST";
+    private static final String TAG = "ADDRESS";
     private Long id;
 
     public void testCreateReadUpdateDelete() throws Exception {
 
-        AddressRepository repo = (AddressRepository) new AddressRepositoryImpl(this.getContext());
+        AddressRepository repo = new  AddressRepositoryImpl(this.getContext());
         // CREATE
        Address createEntity = new  Address.Builder()
                  .city("summer greens")
@@ -47,14 +47,12 @@ public class AddressRepositoryTest  extends AndroidTestCase {
 
         //UPDATE ENTITY
         Address updateEntity = new Address.Builder()
-                .city("Cape town,Zonnebloem")
-                .street("24 caledon street")
-                .country("South africa")
+                .copy(entity)
                 .zipCode("8001")
                 .build();
         repo.update(updateEntity);
         Address newEntity = repo.findById(id);
-        Assert.assertEquals(TAG+ " UPDATE ENTITY","city",newEntity.getCity());
+        Assert.assertEquals(TAG+ " UPDATE ENTITY","8001",newEntity.getZipCode());
 
         // DELETE ENTITY
         repo.delete(updateEntity);

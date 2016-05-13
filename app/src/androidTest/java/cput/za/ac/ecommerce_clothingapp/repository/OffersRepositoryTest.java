@@ -6,7 +6,6 @@ import junit.framework.Assert;
 
 import java.util.Set;
 
-import cput.za.ac.ecommerce_clothingapp.config.util.AppUtil;
 import cput.za.ac.ecommerce_clothingapp.domain.Offers;
 import cput.za.ac.ecommerce_clothingapp.repository.dom.Impl.OffersRepositoryImpl;
 import cput.za.ac.ecommerce_clothingapp.repository.dom.OffersRepository;
@@ -26,8 +25,8 @@ public class OffersRepositoryTest extends AndroidTestCase {
         // CREATE
         Offers createEntity = new  Offers.Builder()
                 .offerPrice((int)200.00)
-                .offerEndDate(AppUtil.getDate("4-May-2016"))
-                .offerStartDate(AppUtil.getDate("2-May-2016"))
+                //.offerEndDate(AppUtil.getDate("4-May-2016"))
+                //.offerStartDate(AppUtil.getDate("2-May-2016"))
                 .description("Addidas Sneakers")
                 .build();
 
@@ -48,14 +47,12 @@ public class OffersRepositoryTest extends AndroidTestCase {
 
         //UPDATE ENTITY
         Offers  updateEntity = new Offers .Builder()
-                .offerPrice((int)200.00)
-                .offerEndDate(AppUtil.getDate("4-May-2016"))
-                .offerStartDate(AppUtil.getDate("2-May-2016"))
+                .copy(entity)
                 .description("Addidas Sneakers")
                 .build();
         repo.update(updateEntity);
         Offers  newEntity = repo.findById(id);
-        Assert.assertEquals(TAG+ " UPDATE ENTITY","accountNumber",newEntity.getId());
+        Assert.assertEquals(TAG+ " UPDATE ENTITY","Addidas Sneakers",newEntity.getDescription());
 
         // DELETE ENTITY
         repo.delete(updateEntity);

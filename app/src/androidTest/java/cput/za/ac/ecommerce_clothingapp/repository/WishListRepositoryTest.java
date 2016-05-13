@@ -26,7 +26,6 @@ public class WishListRepositoryTest  extends AndroidTestCase {
         // CREATE
         WishList createEntity = new  WishList.Builder()
                 .name("Fossil watch")
-                //.customerId()
                 .insertDate(AppUtil.getDate("4-May-2016"))
                 .build();
 
@@ -47,13 +46,12 @@ public class WishListRepositoryTest  extends AndroidTestCase {
 
         //UPDATE ENTITY
         WishList updateEntity = new WishList .Builder()
+                .copy(entity)
                 .name("Police watch")
-                //.customerId()
-                .insertDate(AppUtil.getDate("6-May-2016"))
                 .build();
         repo.update(updateEntity);
         WishList newEntity = repo.findById(id);
-        Assert.assertEquals(TAG+ " UPDATE ENTITY","accountNumber",newEntity.getId());
+        Assert.assertEquals(TAG+ " UPDATE ENTITY","Police watch",newEntity.getName());
 
         // DELETE ENTITY
         repo.delete(updateEntity);

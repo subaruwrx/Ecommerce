@@ -32,9 +32,9 @@ public class RoleRepositoryImpl extends SQLiteOpenHelper implements RoleReposito
     // Database creation sql statement
     private static final String DATABASE_CREATE = " CREATE TABLE "
             +TABLE_NAME +"("
-            +COLUMN_ID + "INTEGER PRIMARY KEY AUTOINCREMENT, "
-            +COLUMN_ROLE + "TEXT NOT NULL , "
-            +COLUMN_DESCRIPTION +"TEXT NOT NULL);";
+            +COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+            +COLUMN_ROLE + " TEXT NOT NULL , "
+            +COLUMN_DESCRIPTION +" TEXT NOT NULL);";
 
     public RoleRepositoryImpl(Context context) {
         super(context, DBConstants.DATABASE_NAME, null, DBConstants.DATABASE_VERSION);

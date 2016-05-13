@@ -26,8 +26,8 @@ public class UserAccountRepositoryImpl extends SQLiteOpenHelper implements UserA
 
     public static final String COLUMN_ID="id";
     public static final String COLUMN_ROLEID ="roleId";
-    public static final String COLUMN_USERNAME =" userName";
-    public static final String COLUMN_PASSWORD =" password";
+    public static final String COLUMN_USERNAME ="userName";
+    public static final String COLUMN_PASSWORD ="password";
     public static final String COLUMN_HINTQUESTION="hintQuestion";
     public static final String COLUMN_ANSWER ="answer";
     public static final String COLUMN_DESCRIPTION="description";
@@ -37,13 +37,13 @@ public class UserAccountRepositoryImpl extends SQLiteOpenHelper implements UserA
     // Database creation sql statement
     private static final String DATABASE_CREATE = " CREATE TABLE "
             +TABLE_NAME +"("
-            +COLUMN_ID + "INTEGER PRIMARY KEY AUTOINCREMENT, "
-            +COLUMN_ROLEID + "INTEGER  NOT NULL , "
-            +COLUMN_USERNAME +"TEXT  NOT NULL ,"
-            +COLUMN_PASSWORD +"TEXT NOT NULL ,"
-            +COLUMN_ANSWER  +"TEXT NOT NULL ,"
-            +COLUMN_DESCRIPTION+ "TEXT NOT NULL ,"
-            +COLUMN_HINTQUESTION +"TEXT NOT NULL);";
+            +COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+            +COLUMN_ROLEID + " INTEGER , "
+            +COLUMN_USERNAME +" TEXT  NOT NULL ,"
+            +COLUMN_PASSWORD +" TEXT NOT NULL ,"
+            +COLUMN_ANSWER  +" TEXT NOT NULL ,"
+            +COLUMN_DESCRIPTION+ " TEXT NOT NULL ,"
+            +COLUMN_HINTQUESTION +" TEXT NOT NULL);";
 
     public UserAccountRepositoryImpl(Context context) {
         super(context, DBConstants.DATABASE_NAME, null, DBConstants.DATABASE_VERSION);
@@ -84,6 +84,8 @@ public class UserAccountRepositoryImpl extends SQLiteOpenHelper implements UserA
             final UserAccount account = new UserAccount.Builder()
                     .id(cursor.getLong(cursor.getColumnIndex(COLUMN_ID)))
                     .roleId(cursor.getLong(cursor.getColumnIndex(COLUMN_ROLEID)))
+                    .userName(cursor.getString(cursor.getColumnIndex(COLUMN_USERNAME)))
+                    .password(cursor.getString(cursor.getColumnIndex(COLUMN_PASSWORD)))
                     .answer(cursor.getString(cursor.getColumnIndex(COLUMN_ANSWER)))
                     .description(cursor.getString(cursor.getColumnIndex(COLUMN_DESCRIPTION)))
                     .hintQuestion(cursor.getString(cursor.getColumnIndex(COLUMN_HINTQUESTION)))
@@ -102,6 +104,8 @@ public class UserAccountRepositoryImpl extends SQLiteOpenHelper implements UserA
         ContentValues values = new ContentValues();
         values.put(COLUMN_ID, entity.getId());
         values.put(COLUMN_ROLEID, entity.getRoleId());
+        values.put(COLUMN_USERNAME,entity.getUserName());
+        values.put(COLUMN_PASSWORD,entity.getPassword());
         values.put(COLUMN_ANSWER, entity.getAnswer());
         values.put(COLUMN_DESCRIPTION, entity.getDescription());
         values.put(COLUMN_HINTQUESTION, entity.getHintQuestion());
@@ -121,10 +125,13 @@ public class UserAccountRepositoryImpl extends SQLiteOpenHelper implements UserA
         open();
         ContentValues values = new ContentValues();
         values.put(COLUMN_ID, entity.getId());
-        values.put(COLUMN_ROLEID, entity.getRoleId());
+        //values.put(COLUMN_ROLEID, entity.getRoleId());
+        values.put(COLUMN_USERNAME,entity.getUserName());
+        values.put(COLUMN_PASSWORD,entity.getPassword());
         values.put(COLUMN_ANSWER, entity.getAnswer());
         values.put(COLUMN_DESCRIPTION, entity.getDescription());
         values.put(COLUMN_HINTQUESTION, entity.getHintQuestion());
+
 
         db.update(
                 TABLE_NAME,
@@ -157,6 +164,8 @@ public class UserAccountRepositoryImpl extends SQLiteOpenHelper implements UserA
                 final UserAccount user1 = new UserAccount.Builder()
                         .id(cursor.getLong(cursor.getColumnIndex(COLUMN_ID)))
                         .roleId(cursor.getLong(cursor.getColumnIndex(COLUMN_ROLEID)))
+                        .userName(cursor.getString(cursor.getColumnIndex(COLUMN_USERNAME)))
+                        .password(cursor.getString(cursor.getColumnIndex(COLUMN_PASSWORD)))
                         .answer(cursor.getString(cursor.getColumnIndex(COLUMN_ANSWER)))
                         .description(cursor.getString(cursor.getColumnIndex(COLUMN_DESCRIPTION)))
                         .hintQuestion(cursor.getString(cursor.getColumnIndex(COLUMN_HINTQUESTION)))
